@@ -1,2 +1,309 @@
-# TCTI-platform
-THAILAND COMMUNITY TOURISM INTELLIGENCE PLATFORM (TCTI Platform)
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCTI A Simple 4 Fields</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef6f8;color:#0f172a}
+header{background:linear-gradient(135deg,#0f172a,#0f766e);color:white;padding:22px;text-align:center}
+header h1{margin:0}
+.wrap{display:grid;grid-template-columns:360px 1fr;gap:16px;padding:16px}
+.card{background:white;border-radius:18px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+h2{margin-top:0;color:#064e3b}
+label{display:block;margin-top:10px;font-weight:bold}
+input,select,button{width:100%;padding:11px;margin-top:6px;border-radius:12px;border:1px solid #cbd5e1;font-size:15px}
+button{background:#0f766e;color:white;border:none;cursor:pointer;font-weight:bold;margin-top:14px}
+.blue{background:#1d4ed8}.red{background:#dc2626}
+.summary{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:14px;padding:12px;margin-bottom:14px;line-height:1.7}
+.mapbox{background:#f8fafc;border:1px solid #cbd5e1;border-radius:14px;padding:14px;margin-bottom:14px}
+.mapbox a{display:inline-block;background:#1d4ed8;color:white;text-decoration:none;padding:10px 14px;border-radius:10px;margin-top:10px}
+.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.place{border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;background:white}
+.place img{width:100%;height:150px;object-fit:cover;background:#e2e8f0}
+.info{padding:12px}
+.badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:4px 9px;border-radius:999px;font-size:12px;margin-right:4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.small{font-size:13px;color:#64748b}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>TCTI B Route Engine</h1>
+<p>A เหลือ 4 ช่อง: จังหวัด / จำนวนคน / เวลา / งบประมาณ</p>
+</header>
+
+<main class="wrap">
+<section class="card">
+<h2>1. เพิ่มข้อมูล C</h2>
+<label>จังหวัด</label><select id="cProvince"><option value="C1 ตรัง">C1 | ตรัง</option>
+<option value="C2 กระบี่">C2 | กระบี่</option>
+<option value="C3 พังงา">C3 | พังงา</option>
+<option value="C4 ภูเก็ต">C4 | ภูเก็ต</option>
+<option value="C5 สตูล">C5 | สตูล</option>
+<option value="C6 ระนอง">C6 | ระนอง</option>
+<option value="C7 ชุมพร">C7 | ชุมพร</option>
+<option value="C8 สุราษฎร์ธานี">C8 | สุราษฎร์ธานี</option>
+<option value="C9 นครศรีธรรมราช">C9 | นครศรีธรรมราช</option>
+<option value="C10 สงขลา">C10 | สงขลา</option>
+<option value="C11 พัทลุง">C11 | พัทลุง</option>
+<option value="C12 ปัตตานี">C12 | ปัตตานี</option>
+<option value="C13 ยะลา">C13 | ยะลา</option>
+<option value="C14 นราธิวาส">C14 | นราธิวาส</option>
+<option value="C15 กรุงเทพมหานคร">C15 | กรุงเทพมหานคร</option>
+<option value="C16 นนทบุรี">C16 | นนทบุรี</option>
+<option value="C17 ปทุมธานี">C17 | ปทุมธานี</option>
+<option value="C18 สมุทรปราการ">C18 | สมุทรปราการ</option>
+<option value="C19 พระนครศรีอยุธยา">C19 | พระนครศรีอยุธยา</option>
+<option value="C20 สระบุรี">C20 | สระบุรี</option>
+<option value="C21 ลพบุรี">C21 | ลพบุรี</option>
+<option value="C22 ชัยนาท">C22 | ชัยนาท</option>
+<option value="C23 สิงห์บุรี">C23 | สิงห์บุรี</option>
+<option value="C24 อ่างทอง">C24 | อ่างทอง</option>
+<option value="C25 นครปฐม">C25 | นครปฐม</option>
+<option value="C26 ราชบุรี">C26 | ราชบุรี</option>
+<option value="C27 กาญจนบุรี">C27 | กาญจนบุรี</option>
+<option value="C28 เพชรบุรี">C28 | เพชรบุรี</option>
+<option value="C29 ประจวบคีรีขันธ์">C29 | ประจวบคีรีขันธ์</option>
+<option value="C30 สุพรรณบุรี">C30 | สุพรรณบุรี</option>
+<option value="C31 สมุทรสงคราม">C31 | สมุทรสงคราม</option>
+<option value="C32 สมุทรสาคร">C32 | สมุทรสาคร</option>
+<option value="C33 ชลบุรี">C33 | ชลบุรี</option>
+<option value="C34 ระยอง">C34 | ระยอง</option>
+<option value="C35 จันทบุรี">C35 | จันทบุรี</option>
+<option value="C36 ตราด">C36 | ตราด</option>
+<option value="C37 ฉะเชิงเทรา">C37 | ฉะเชิงเทรา</option>
+<option value="C38 ปราจีนบุรี">C38 | ปราจีนบุรี</option>
+<option value="C39 สระแก้ว">C39 | สระแก้ว</option>
+<option value="C40 เชียงใหม่">C40 | เชียงใหม่</option>
+<option value="C41 เชียงราย">C41 | เชียงราย</option>
+<option value="C42 ลำปาง">C42 | ลำปาง</option>
+<option value="C43 ลำพูน">C43 | ลำพูน</option>
+<option value="C44 แพร่">C44 | แพร่</option>
+<option value="C45 น่าน">C45 | น่าน</option>
+<option value="C46 พะเยา">C46 | พะเยา</option>
+<option value="C47 แม่ฮ่องสอน">C47 | แม่ฮ่องสอน</option>
+<option value="C48 ตาก">C48 | ตาก</option>
+<option value="C49 พิษณุโลก">C49 | พิษณุโลก</option>
+<option value="C50 สุโขทัย">C50 | สุโขทัย</option>
+<option value="C51 กำแพงเพชร">C51 | กำแพงเพชร</option>
+<option value="C52 พิจิตร">C52 | พิจิตร</option>
+<option value="C53 เพชรบูรณ์">C53 | เพชรบูรณ์</option>
+<option value="C54 นครสวรรค์">C54 | นครสวรรค์</option>
+<option value="C55 อุทัยธานี">C55 | อุทัยธานี</option>
+<option value="C56 เลย">C56 | เลย</option>
+<option value="C57 ขอนแก่น">C57 | ขอนแก่น</option>
+<option value="C58 อุดรธานี">C58 | อุดรธานี</option>
+<option value="C59 หนองคาย">C59 | หนองคาย</option>
+<option value="C60 หนองบัวลำภู">C60 | หนองบัวลำภู</option>
+<option value="C61 บึงกาฬ">C61 | บึงกาฬ</option>
+<option value="C62 สกลนคร">C62 | สกลนคร</option>
+<option value="C63 นครพนม">C63 | นครพนม</option>
+<option value="C64 มุกดาหาร">C64 | มุกดาหาร</option>
+<option value="C65 กาฬสินธุ์">C65 | กาฬสินธุ์</option>
+<option value="C66 มหาสารคาม">C66 | มหาสารคาม</option>
+<option value="C67 ร้อยเอ็ด">C67 | ร้อยเอ็ด</option>
+<option value="C68 ยโสธร">C68 | ยโสธร</option>
+<option value="C69 อำนาจเจริญ">C69 | อำนาจเจริญ</option>
+<option value="C70 ศรีสะเกษ">C70 | ศรีสะเกษ</option>
+<option value="C71 สุรินทร์">C71 | สุรินทร์</option>
+<option value="C72 บุรีรัมย์">C72 | บุรีรัมย์</option>
+<option value="C73 นครราชสีมา">C73 | นครราชสีมา</option>
+<option value="C74 ชัยภูมิ">C74 | ชัยภูมิ</option>
+<option value="C75 อุบลราชธานี">C75 | อุบลราชธานี</option>
+<option value="C76 อุตรดิตถ์">C76 | อุตรดิตถ์</option>
+<option value="C77 อุทัยธานี">C77 | อุทัยธานี</option></select>
+<label>ชื่อแหล่งท่องเที่ยว</label><input id="cName" placeholder="เช่น เกาะลิบง">
+<div class="row"><div><label>Lat</label><input id="cLat" type="number" step="0.000001"></div><div><label>Lng</label><input id="cLng" type="number" step="0.000001"></div></div>
+<label>ประเภท</label><select id="cType"><option>ทะเล</option><option>ธรรมชาติ</option><option>อาหาร</option><option>วัฒนธรรม</option><option>ชุมชน</option><option>เกษตร</option><option>Wellness</option></select>
+<label>กิจกรรม</label><input id="cActivity" placeholder="เช่น ดูพะยูน ล่องเรือ">
+<div class="row"><div><label>ราคา/คน</label><input id="cCost" type="number" value="500"></div><div><label>เวลา ชม.</label><input id="cTime" type="number" value="2"></div></div>
+<label>URL รูป</label><input id="cImage" placeholder="https://...jpg">
+<label>ลิงก์เอกสาร / Google Sheet</label><input id="cDoc" placeholder="https://docs.google.com/...">
+<button onclick="addPlace()">เพิ่มข้อมูล C</button>
+<button class="blue" onclick="loadDemo()">โหลดตัวอย่าง</button>
+<button class="red" onclick="clearAll()">ล้างข้อมูลทั้งหมด</button>
+
+<h2 style="margin-top:24px">2. เงื่อนไข A</h2>
+<label>1. ท่องเที่ยวชุมชน จว.</label>
+<select id="province"><option value="C1 ตรัง">C1 | ตรัง</option>
+<option value="C2 กระบี่">C2 | กระบี่</option>
+<option value="C3 พังงา">C3 | พังงา</option>
+<option value="C4 ภูเก็ต">C4 | ภูเก็ต</option>
+<option value="C5 สตูล">C5 | สตูล</option>
+<option value="C6 ระนอง">C6 | ระนอง</option>
+<option value="C7 ชุมพร">C7 | ชุมพร</option>
+<option value="C8 สุราษฎร์ธานี">C8 | สุราษฎร์ธานี</option>
+<option value="C9 นครศรีธรรมราช">C9 | นครศรีธรรมราช</option>
+<option value="C10 สงขลา">C10 | สงขลา</option>
+<option value="C11 พัทลุง">C11 | พัทลุง</option>
+<option value="C12 ปัตตานี">C12 | ปัตตานี</option>
+<option value="C13 ยะลา">C13 | ยะลา</option>
+<option value="C14 นราธิวาส">C14 | นราธิวาส</option>
+<option value="C15 กรุงเทพมหานคร">C15 | กรุงเทพมหานคร</option>
+<option value="C16 นนทบุรี">C16 | นนทบุรี</option>
+<option value="C17 ปทุมธานี">C17 | ปทุมธานี</option>
+<option value="C18 สมุทรปราการ">C18 | สมุทรปราการ</option>
+<option value="C19 พระนครศรีอยุธยา">C19 | พระนครศรีอยุธยา</option>
+<option value="C20 สระบุรี">C20 | สระบุรี</option>
+<option value="C21 ลพบุรี">C21 | ลพบุรี</option>
+<option value="C22 ชัยนาท">C22 | ชัยนาท</option>
+<option value="C23 สิงห์บุรี">C23 | สิงห์บุรี</option>
+<option value="C24 อ่างทอง">C24 | อ่างทอง</option>
+<option value="C25 นครปฐม">C25 | นครปฐม</option>
+<option value="C26 ราชบุรี">C26 | ราชบุรี</option>
+<option value="C27 กาญจนบุรี">C27 | กาญจนบุรี</option>
+<option value="C28 เพชรบุรี">C28 | เพชรบุรี</option>
+<option value="C29 ประจวบคีรีขันธ์">C29 | ประจวบคีรีขันธ์</option>
+<option value="C30 สุพรรณบุรี">C30 | สุพรรณบุรี</option>
+<option value="C31 สมุทรสงคราม">C31 | สมุทรสงคราม</option>
+<option value="C32 สมุทรสาคร">C32 | สมุทรสาคร</option>
+<option value="C33 ชลบุรี">C33 | ชลบุรี</option>
+<option value="C34 ระยอง">C34 | ระยอง</option>
+<option value="C35 จันทบุรี">C35 | จันทบุรี</option>
+<option value="C36 ตราด">C36 | ตราด</option>
+<option value="C37 ฉะเชิงเทรา">C37 | ฉะเชิงเทรา</option>
+<option value="C38 ปราจีนบุรี">C38 | ปราจีนบุรี</option>
+<option value="C39 สระแก้ว">C39 | สระแก้ว</option>
+<option value="C40 เชียงใหม่">C40 | เชียงใหม่</option>
+<option value="C41 เชียงราย">C41 | เชียงราย</option>
+<option value="C42 ลำปาง">C42 | ลำปาง</option>
+<option value="C43 ลำพูน">C43 | ลำพูน</option>
+<option value="C44 แพร่">C44 | แพร่</option>
+<option value="C45 น่าน">C45 | น่าน</option>
+<option value="C46 พะเยา">C46 | พะเยา</option>
+<option value="C47 แม่ฮ่องสอน">C47 | แม่ฮ่องสอน</option>
+<option value="C48 ตาก">C48 | ตาก</option>
+<option value="C49 พิษณุโลก">C49 | พิษณุโลก</option>
+<option value="C50 สุโขทัย">C50 | สุโขทัย</option>
+<option value="C51 กำแพงเพชร">C51 | กำแพงเพชร</option>
+<option value="C52 พิจิตร">C52 | พิจิตร</option>
+<option value="C53 เพชรบูรณ์">C53 | เพชรบูรณ์</option>
+<option value="C54 นครสวรรค์">C54 | นครสวรรค์</option>
+<option value="C55 อุทัยธานี">C55 | อุทัยธานี</option>
+<option value="C56 เลย">C56 | เลย</option>
+<option value="C57 ขอนแก่น">C57 | ขอนแก่น</option>
+<option value="C58 อุดรธานี">C58 | อุดรธานี</option>
+<option value="C59 หนองคาย">C59 | หนองคาย</option>
+<option value="C60 หนองบัวลำภู">C60 | หนองบัวลำภู</option>
+<option value="C61 บึงกาฬ">C61 | บึงกาฬ</option>
+<option value="C62 สกลนคร">C62 | สกลนคร</option>
+<option value="C63 นครพนม">C63 | นครพนม</option>
+<option value="C64 มุกดาหาร">C64 | มุกดาหาร</option>
+<option value="C65 กาฬสินธุ์">C65 | กาฬสินธุ์</option>
+<option value="C66 มหาสารคาม">C66 | มหาสารคาม</option>
+<option value="C67 ร้อยเอ็ด">C67 | ร้อยเอ็ด</option>
+<option value="C68 ยโสธร">C68 | ยโสธร</option>
+<option value="C69 อำนาจเจริญ">C69 | อำนาจเจริญ</option>
+<option value="C70 ศรีสะเกษ">C70 | ศรีสะเกษ</option>
+<option value="C71 สุรินทร์">C71 | สุรินทร์</option>
+<option value="C72 บุรีรัมย์">C72 | บุรีรัมย์</option>
+<option value="C73 นครราชสีมา">C73 | นครราชสีมา</option>
+<option value="C74 ชัยภูมิ">C74 | ชัยภูมิ</option>
+<option value="C75 อุบลราชธานี">C75 | อุบลราชธานี</option>
+<option value="C76 อุตรดิตถ์">C76 | อุตรดิตถ์</option>
+<option value="C77 อุทัยธานี">C77 | อุทัยธานี</option></select>
+<label>2. จำนวนคน</label>
+<input id="people" type="number" value="2">
+<label>3. เวลา / จำนวนวัน</label>
+<input id="days" type="number" value="2">
+<label>4. งบประมาณ</label>
+<input id="budget" type="number" value="5000">
+<button onclick="runRoute()">ให้ B รัน Route</button>
+</section>
+
+<section class="card">
+<h2>ผลลัพธ์จาก B</h2>
+<div id="summary" class="summary">รอข้อมูล C</div>
+<div id="map" class="mapbox">Google Maps Route</div>
+<h3>Route ที่ B เลือก</h3>
+<div id="result" class="list"></div>
+<h3>ข้อมูล C ทั้งหมด</h3>
+<div id="allPlaces" class="list"></div>
+</section>
+</main>
+
+<script>
+let places=[];
+
+function save(){localStorage.setItem("tcti_places_A4",JSON.stringify(places));}
+
+function loadDemo(){
+  places=[
+    {province:"C1 ตรัง",name:"เกาะลิบง",lat:7.244,lng:99.395,type:"ทะเล",activity:"ดูพะยูน ล่องเรือ วิถีประมง",cost:1200,time:4,image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",doc:""},
+    {province:"C1 ตรัง",name:"กันตังเมืองเก่า",lat:7.405,lng:99.515,type:"วัฒนธรรม",activity:"สถานีรถไฟเก่า คาเฟ่ อาหารพื้นถิ่น",cost:600,time:3,image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",doc:""},
+    {province:"C1 ตรัง",name:"นาโยง",lat:7.557,lng:99.761,type:"ธรรมชาติ",activity:"สวนผลไม้ ชุมชนเกษตร",cost:800,time:3,image:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",doc:""},
+    {province:"C2 กระบี่",name:"เขาทองฮิล",lat:7.22,lng:99.39,type:"อาหาร",activity:"คาเฟ่บนเขาและวิวทะเล",cost:500,time:2,image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",doc:""},
+    {province:"C2 กระบี่",name:"ท่าปอม",lat:7.3,lng:99.1,type:"ธรรมชาติ",activity:"สายน้ำใส ป่าชายเลน",cost:500,time:2,image:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",doc:""}
+  ];
+  save(); renderAll(); runRoute();
+}
+
+function load(){
+  places=JSON.parse(localStorage.getItem("tcti_places_A4")||"[]");
+  if(!places.length) loadDemo();
+  else{renderAll(); runRoute();}
+}
+
+function addPlace(){
+  const p={province:cProvince.value,name:cName.value.trim(),lat:Number(cLat.value),lng:Number(cLng.value),type:cType.value,activity:cActivity.value.trim(),cost:Number(cCost.value),time:Number(cTime.value),image:cImage.value.trim(),doc:cDoc.value.trim()};
+  if(!p.name||!p.lat||!p.lng){alert("กรอกชื่อและพิกัดก่อนครับ");return}
+  places.push(p); save(); renderAll(); runRoute();
+  cName.value=""; cLat.value=""; cLng.value=""; cActivity.value=""; cImage.value=""; cDoc.value=""; cCost.value=500; cTime.value=2;
+}
+
+function clearAll(){
+  if(confirm("ล้างข้อมูลทั้งหมด?")){places=[]; save(); renderAll(); runRoute();}
+}
+
+function runRoute(){
+  if(!places.length){summary.innerHTML="ยังไม่มีข้อมูล C";map.innerHTML="ยังไม่มี Route";result.innerHTML="";return}
+  const pv=province.value;
+  const pp=Number(people.value);
+  const d=Number(days.value);
+  const b=Number(budget.value);
+  const maxTime=d*8;
+
+  let filtered=places.filter(p=>p.province===pv);
+  filtered.sort((a,b)=>(Number(a.cost)+Number(a.time)*100)-(Number(b.cost)+Number(b.time)*100));
+
+  let selected=[], totalCost=0, totalTime=0;
+  for(const p of filtered){
+    const cg=Number(p.cost)*pp;
+    if(totalCost+cg<=b && totalTime+Number(p.time)<=maxTime){
+      selected.push(p); totalCost+=cg; totalTime+=Number(p.time);
+    }
+  }
+
+  summary.innerHTML=`<b>จังหวัด:</b> ${pv}<br><b>จำนวนคน:</b> ${pp} คน<br><b>เวลา:</b> ${d} วัน<br><b>งบ:</b> ${b.toLocaleString()} บาท<br><b>ใช้จริง:</b> ${totalCost.toLocaleString()} บาท<br><b>คงเหลือ:</b> ${(b-totalCost).toLocaleString()} บาท<br><b>เวลาใช้:</b> ${totalTime} ชม.<br><b>จำนวนจุด:</b> ${selected.length}`;
+  renderMap(selected);
+  renderSelected(selected,pp);
+}
+
+function renderMap(selected){
+  if(!selected.length){map.innerHTML="ไม่พบ Route ในจังหวัดนี้ หรือข้อมูล C ยังไม่มี";return}
+  let url="";
+  if(selected.length===1){
+    url=`https://www.google.com/maps/search/?api=1&query=${selected[0].lat},${selected[0].lng}`;
+  } else {
+    const origin=`${selected[0].lat},${selected[0].lng}`;
+    const destination=`${selected[selected.length-1].lat},${selected[selected.length-1].lng}`;
+    const waypoints=selected.slice(1,-1).map(p=>`${p.lat},${p.lng}`).join("|");
+    url=`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`+(waypoints?`&waypoints=${encodeURIComponent(waypoints)}`:"");
+  }
+  map.innerHTML=`<b>Google Maps Route</b><br>B สร้างเส้นทาง ${selected.length} จุด<br><a href="${url}" target="_blank">เปิดเส้นทางจริงบน Google Maps</a>`;
+}
+
+function card(p,i,pp){
+  return `<div class="place">${p.image?`<img src="${p.image}" onerror="this.style.display='none'">`:""}<div class="info"><h3>${i+1}. ${p.name}</h3><span class="badge">${p.province}</span><span class="badge">${p.type}</span><p>${p.activity}</p><p class="small">พิกัด: ${p.lat}, ${p.lng}<br>ราคา: ${(Number(p.cost)*(pp||1)).toLocaleString()} บาท | เวลา: ${p.time} ชม.</p>${p.doc?`<p><a href="${p.doc}" target="_blank">📄 เปิดเอกสาร / Google Sheet</a></p>`:""}</div></div>`;
+}
+
+function renderAll(){allPlaces.innerHTML=places.map((p,i)=>card(p,i,1)).join("")||"ยังไม่มีข้อมูล C";}
+function renderSelected(selected,pp){result.innerHTML=selected.map((p,i)=>card(p,i,pp)).join("")||"ไม่มีจุดที่เข้าเงื่อนไข";}
+
+load();
+</script>
+</body>
+</html>
